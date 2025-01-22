@@ -36,7 +36,7 @@ app.use("/api/workouts", workoutRoutes);
 
 
 const cors = require("cors")
-app.use(cors())
+app.use(cors());
 
 // Connect to DB
 mongoose
