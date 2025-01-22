@@ -15,6 +15,7 @@ const Home = () => {
 
       if (response.ok) {
         dispatch({type: 'SET_WORKOUTS', payload: json})
+        
       }
     }
 
@@ -30,6 +31,7 @@ const Home = () => {
       </div>
       <WorkoutForm />
     </div>
+    
   )
 }
 

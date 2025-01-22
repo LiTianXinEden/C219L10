@@ -40,7 +40,9 @@ app.use((req, res, next) => {
 app.use("/api/workouts", workoutRoutes);
 
 
-
+app.get("/api/workouts", (req, res) => {
+  res.json({ message: 'Hello from the backend!' });
+});
 
 
 // Connect to DB
