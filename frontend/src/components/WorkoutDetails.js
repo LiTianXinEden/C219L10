@@ -25,6 +25,9 @@ const WorkoutDetails = ({ workout }) => {
     console.log('id', json._id)
   }
 
+  //==========================
+  //==========================
+
   const handleUpdate = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts/${workout._id}`, {
       method: 'PATCH',
@@ -38,9 +41,13 @@ const WorkoutDetails = ({ workout }) => {
       }),
     })
     const json = await response.json()
+    console.log('Updated Workout:', json); // Log the response to verify
 
     if (response.ok) {
     dispatch({ type: 'UPDATE_WORKOUT', payload: json });
+    setEditTitle(json.title); // Update local state
+    setEditLoad(json.load);
+    setEditReps(json.reps);
     setIsEditing(false); // Exit edit mode after successful update
   } else {
     console.error('Failed to update workout:', json.error);
