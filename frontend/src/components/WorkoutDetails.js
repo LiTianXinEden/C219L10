@@ -40,8 +40,10 @@ const WorkoutDetails = ({ workout }) => {
     const json = await response.json()
 
     if (response.ok) {
-      dispatch({ type: 'UPDATE_WORKOUT', payload: json })
-      setIsEditing(false) // Exit edit mode after successful update
+      dispatch({ type: 'UPDATE_WORKOUT', payload: json });
+      setIsEditing(false); // Exit edit mode after successful update
+    } else {
+      console.error('Failed to update workout:', json.error);
     }
   }
 
