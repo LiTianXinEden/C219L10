@@ -94,10 +94,11 @@ const WorkoutDetails = ({ workout }) => {
             {workout.reps}
           </p>
           <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          {/* <button onClick={() => setIsEditing(true)}>Edit</button> */}
           <span className="material-symbols-outlined" onClick={handleClick}>
             delete
           </span>
+          <span className="material-symbols-outlined" onClick={handleUpdate}>Edit</span>
         </div>
       )}
     </div>
