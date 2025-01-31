@@ -128,3 +128,34 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+/* ===================== */
+.editbutton {
+  background-color: #4967c1;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.savebutton {
+  background-color: #1c837a;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelbutton {
+  background-color: #fe6a6d;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -46,6 +46,7 @@ const WorkoutDetails = ({ workout }) => {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify({
         title: editTitle,
@@ -86,8 +87,8 @@ const WorkoutDetails = ({ workout }) => {
             onChange={(e) => setEditReps(e.target.value)}
             placeholder="Number of reps"
           />
-          <button onClick={handleUpdate}>Save</button>
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
+          <button onClick={handleUpdate} className="savebutton">Save</button>
+          <button onClick={() => setIsEditing(false)} className="cancelbutton">Cancel</button>
         </div>
       ) : (
         <div>
@@ -101,7 +102,7 @@ const WorkoutDetails = ({ workout }) => {
             {workout.reps}
           </p>
           <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <button onClick={() => setIsEditing(true)} className="editbutton">Edit</button>
           <span className="material-symbols-outlined" onClick={handleClick}>
             delete
           </span>
