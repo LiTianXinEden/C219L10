@@ -20,7 +20,11 @@ const cors = require("cors")
 // Set up the express app
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://c219l10-frontend.onrender.com",  // Change to your frontend URL for better security
+  methods: "GET,POST,PATCH,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
 // Middleware:
 // any code that executes between us getting a request on the server

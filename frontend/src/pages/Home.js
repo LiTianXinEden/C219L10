@@ -12,8 +12,11 @@ const Home = () => {
 
   useEffect(() => {
     console.log("User:", user); // Debugging
-    if (!user) return; // Prevent API calls if user is not loaded
-  
+    if (!user || !user.token) {
+      console.error("User not authenticated");
+      return;
+    }
+    
     const fetchWorkouts = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts`, {
@@ -32,7 +35,7 @@ const Home = () => {
         console.error("Error fetching workouts:", err);
       }
     };
-  
+    console.log("API URL:", process.env.REACT_APP_API_URL);
     fetchWorkouts();
   }, [dispatch, user]);
 
