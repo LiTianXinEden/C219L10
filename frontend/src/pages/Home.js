@@ -11,24 +11,30 @@ const Home = () => {
   const { user } = useAuthContext()
 
   useEffect(() => {
+    console.log("User:", user); // Debugging
+    if (!user) return; // Prevent API calls if user is not loaded
+  
     const fetchWorkouts = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts`, {
-        headers: {
-          'Authorization': `Bearer ${user.token}`
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/workouts`, {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+  
+        if (!response.ok) {
+          throw new Error("Failed to fetch workouts");
         }
-      });
-      const json = await response.json()
-
-      if (response.ok) {
-        dispatch({type: 'SET_WORKOUTS', payload: json})
-        
+  
+        const json = await response.json();
+        dispatch({ type: 'SET_WORKOUTS', payload: json });
+      } catch (err) {
+        console.error("Error fetching workouts:", err);
       }
-    }
-    if (user) {
-      fetchWorkouts()
-    }
-    
-  }, [dispatch, user])
+    };
+  
+    fetchWorkouts();
+  }, [dispatch, user]);
 
   return (
     <div className="home">
